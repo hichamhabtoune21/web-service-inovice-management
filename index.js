@@ -1,6 +1,8 @@
 const api = require('./lib/api-service');
 const app=api.app;
 api.init();
+const db=require('./lib/connect');
+db.connectToDb();
 const port = 3000;
 
 const health = require("./routes/health");
