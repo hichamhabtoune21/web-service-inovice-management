@@ -3,6 +3,12 @@ const router = api.Router();
 const db_methods = require('../../lib/db_methods');
 const Invoice = require('../../lib/models/invoice').Invoice;
 
+const Ajv = require("ajv")
+const ajv = new Ajv();
+const invoice_schema = require('../../lib/schemas/invoice-schema').schema;
+
+const validate = ajv.compile(invoice_schema);
+
 router.get("/", async function (req, res) {
   try {
     const invoices = await db_methods.findAll(Invoice);
@@ -14,9 +20,16 @@ router.get("/", async function (req, res) {
 
 router.post("/create", async function (req, res) {
   try {
-    //db_methods.Create(Invoice,req);
+    const valid = validate(req.body);
+    if (!valid) {
+      console.log(validate.errors);
+      res.send(validate.errors);
+    }
+    else {
+      await db_methods.create(Invoice, req.body);
+      res.send({ text: 'success' })
+    }
     console.log(req.body);
-    res.send({text: 'success'})
   } catch (error) {
     console.error('Failed to retrieve data : ', error);
   }
