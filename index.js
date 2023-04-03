@@ -6,12 +6,12 @@ db.connectToDb();
 const port = 3000;
 
 const health = require("./routes/health");
-const listInvoices = require("./routes/invoices/list");
+const invoices = require("./routes/invoices/main");
 const listUsers = require("./routes/users/list");
 
 app.use("/health",health);
 app.use("/",health);
-app.use("/invoices",listInvoices);
+app.use("/invoices",invoices);
 app.use("/users",listUsers);
 
 app.listen(port, () => {
