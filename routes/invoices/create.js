@@ -3,7 +3,7 @@ const Ajv = require("ajv");
 const ajv = new Ajv();
 const db_methods = require('../../lib/db_methods');
 const Invoice = require('../../lib/models/invoice').Invoice;
-const invoice_schema = require('../../lib/schemas/invoice-schema').schema;
+const invoice_schema = require('../../lib/schemas/invoice_schema').schema;
 const validate = ajv.compile(invoice_schema);
 
 router.post("/", async function (req, res) {
@@ -13,7 +13,7 @@ router.post("/", async function (req, res) {
       res.send(validate.errors);
     }
     else {
-      await db_methods.create(Invoice, req.body);
+      await db_methods.create(Invoice, req.body,req.body.User);
       res.send({ text: 'success' })
     }
   

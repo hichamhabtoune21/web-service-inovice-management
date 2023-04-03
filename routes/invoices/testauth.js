@@ -3,7 +3,7 @@ const Ajv = require("ajv");
 const ajv = new Ajv();
 const db_methods = require('../../lib/db_methods');
 const User = require('../../lib/models/user').User;
-const invoice_schema = require('../../lib/schemas/invoice-schema').schema;
+const invoice_schema = require('../../lib/schemas/invoice_schema').schema;
 const validate = ajv.compile(invoice_schema);
 
 router.post("/", async function (req, res) {
@@ -15,7 +15,7 @@ router.post("/", async function (req, res) {
     }
     else {
         const user = req.body.User;
-        const result = await db_methods.auth(User, user);
+        const result = await db_methods.auth(user);
         res.send({ authenticated: result });
     }
 

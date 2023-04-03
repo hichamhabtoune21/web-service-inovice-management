@@ -1,9 +1,10 @@
+require('dotenv').config()
 const api = require('./lib/api-service');
 const app=api.app;
 api.init();
 const db=require('./lib/connect');
 db.connectToDb();
-const port = 3000;
+const port = process.env.PORT;
 
 const health = require("./routes/health");
 const invoices = require("./routes/invoices/main");
