@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const service = require('../../lib/api-service');
+
 const db_methods = require('../../lib/db_methods');
 const Invoice = require('../../lib/models/invoice').Invoice;
 

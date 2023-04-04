@@ -8,7 +8,7 @@ const validate = ajv.compile(invoice_schema);
 
 router.post("/", async function (req, res) {
     const valid = validate(req.body);
-
+    /*
     if (!valid) {
         console.log(validate.errors);
         res.send(validate.errors);
@@ -18,6 +18,18 @@ router.post("/", async function (req, res) {
         const result = await db_methods.auth(user);
         res.send({ authenticated: result });
     }
+    */
+    const user = req.headers.authorization;
+    let basic = user.replace('Basic ','');
+    console.log(user)
+    basic = Buffer.from(basic, 'base64').toString('utf8') 
+
+    const credentials = basic.split(":"); 
+    const user_object={
+        Email: credentials[0],
+        Password: credentials[1]
+    };
+    res.send({ authenticated: credentials[1] });
 
 })
 module.exports = router;
