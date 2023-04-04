@@ -2,8 +2,7 @@ require('dotenv').config()
 const api = require('./lib/api-service');
 const app=api.app;
 api.init();
-const db=require('./lib/connect');
-db.connectToDb();
+
 const port = process.env.PORT;
 
 const health = require("./routes/health");
