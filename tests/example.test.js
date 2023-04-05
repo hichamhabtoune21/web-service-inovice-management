@@ -1,4 +1,4 @@
-const app=require('../app').app;
+const app=require('../lib/app').app;
 const request =require("supertest");
 describe('should respond with 200 status code', () => {
     test('', async () => {
