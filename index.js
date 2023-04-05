@@ -14,9 +14,12 @@ app.use("/",health);
 app.use("/invoices",invoices);
 app.use("/users",listUsers);
 
-app.listen(port, () => {
+app.listen(port, async() => {
   console.log(`Example app listening on port ${port}`)
 });
+
+
+exports.app=app;
 
 
 

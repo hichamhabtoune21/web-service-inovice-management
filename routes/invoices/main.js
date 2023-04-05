@@ -15,7 +15,7 @@ router.post("/", function () { }).use("/create", create);
 router.post("/", function () { }).use("/remove", remove);
 router.post("/", function () { }).use("/search", search);
 router.post("/", function () { }).use("/testauth", testauth);
-router.post("/", function () { }).use("/", list);
+router.get("/", function () { }).use("/list", list);
 router.post("/", function () { }).use("/permissions", permissions);
 
 
