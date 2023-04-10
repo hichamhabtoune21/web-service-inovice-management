@@ -15,11 +15,11 @@ router.get("/", async function (req, res) {
       Password: credentials.pass
     };
      if (await db_methods.auth(user)) {
-      const invoices = await db_methods.findAll(Invoice, user);
-      if (invoices == 403) {
+      const result = await db_methods.findAll(Invoice, user);
+      if (result == 403) {
         res.sendStatus(403);
       } else {
-        res.status(200).send(invoices);
+        res.status(200).send(result);
       }
     } else {
       res.sendStatus(401);

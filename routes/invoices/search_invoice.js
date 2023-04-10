@@ -21,7 +21,7 @@ router.post("/", async function (req, res) {
         const valid = validate(req.body);
         if (await db_methods.auth(user)) {
             if (!valid) {
-                console.log(validate.errors);
+                //console.log(validate.errors);
                 res.sendStatus(400);
             }
             else {
