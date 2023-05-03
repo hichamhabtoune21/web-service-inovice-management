@@ -8,7 +8,7 @@ const invoice_schema = require('../../lib/schemas/update_invoice_schema').schema
 const validate = ajv.compile(invoice_schema);
 const auth = require('basic-auth');
 
-router.put("/", async function (req, res) {
+router.patch("/", async function (req, res) {
   if (req.headers.authorization == null) {
     res.sendStatus(400)
   }

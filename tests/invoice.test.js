@@ -100,20 +100,20 @@ describe('Invoice: update invoice', () => {
 
   test('should respond with 200 status code ', async () => {
     await request(app)
-      .put('/invoices/update')
+      .patch('/invoices/update')
       .send(newInvoice)
       .set('Authorization', 'Basic ' + basic)
       .expect(200)
   })
   test('should respond with 400 if user has not respected schema', async () => {
     await request(app)
-      .put('/invoices/update')
+      .patch('/invoices/update')
       .set('Authorization', 'Basic ' + basic)
       .expect(400)
   })
   test('should respond with 401 if not authenticated ', async () => {
     await request(app)
-      .put('/invoices/update')
+      .patch('/invoices/update')
       .send(newInvoice)
       .set('Authorization', 'Basic ' + "dGVzdDp0ZXN0")
       .expect(401)
@@ -121,7 +121,7 @@ describe('Invoice: update invoice', () => {
 
   test('should respond with 403 if user has not UPDATE permission', async () => {
     await request(app)
-      .put('/invoices/update')
+      .patch('/invoices/update')
       .send(newInvoice)
       .set('Authorization', 'Basic ' + basic_forbidden)
       .expect(403)
