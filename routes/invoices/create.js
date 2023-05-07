@@ -4,7 +4,7 @@ const Ajv = require("ajv");
 const ajv = new Ajv();
 const db_methods = require('../../lib/db_methods');
 const Invoice = require('../../lib/models/invoice').Invoice;
-const invoice_schema = require('../../lib/schemas/invoice_schema').schema;
+const invoice_schema = require('../../lib/schemas/createInvoice').schema;
 const validate = ajv.compile(invoice_schema);
 const auth = require('basic-auth');
 
@@ -39,4 +39,35 @@ router.put("/", async function (req, res) {
   }
 
 });
+/**
+* @swagger
+* /invoices/create:
+*   put:
+*     summary: Create invoice
+*     description: Creates a new invoice in the database with the provided JSON object
+*     tags: [Invoices]
+*     parameters:
+*       - in: header
+*         name: Authorization
+*         type: string
+*         required: true
+*         description: Basic Authentication header with email and password credentials
+*     requestBody:
+*       description: JSON object containing the invoice data to be created
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             $ref: '#/components/schemas/createInvoice'
+*     responses:
+*       201:
+*         description: Created
+*       400:
+*         description: Bad request
+*       401:
+*         description: Unauthorized
+*       403:
+*         description: Forbidden
+*/
+
 module.exports = router;

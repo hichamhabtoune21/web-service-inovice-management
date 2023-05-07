@@ -14,7 +14,7 @@ router.get("/", async function (req, res) {
       Email: credentials.name,
       Password: credentials.pass
     };
-     if (await db_methods.auth(user)) {
+    if (await db_methods.auth(user)) {
       const result = await db_methods.findAll(Invoice, user);
       if (result == 403) {
         res.sendStatus(403);
@@ -26,5 +26,34 @@ router.get("/", async function (req, res) {
     }
   }
 });
+
+/**
+ * @swagger
+ * /invoices/list:
+ *   get:
+ *     summary: Get all invoices endpoint
+ *     description: Get all invoices of database
+ *     tags: [Invoices]
+ *     parameters:
+ *       - in: header
+ *         name: Authorization
+ *         type: string
+ *         required: true
+ *         description: Basic Authentication header with email and password credentials
+ *     responses:
+ *       200:
+ *         description: Success
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/idInvoice'
+ *       401:
+ *         description: Unauthorized
+ *       403:
+ *         description: Forbidden
+ */
+
 
 module.exports = router;

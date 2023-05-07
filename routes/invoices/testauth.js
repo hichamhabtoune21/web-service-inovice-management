@@ -3,7 +3,7 @@ const Ajv = require("ajv");
 const ajv = new Ajv();
 const db_methods = require('../../lib/db_methods');
 const User = require('../../lib/models/user').User;
-const invoice_schema = require('../../lib/schemas/invoice_schema').schema;
+const invoice_schema = require('../../lib/schemas/createInvoice').schema;
 const validate = ajv.compile(invoice_schema);
 
 router.post("/", async function (req, res) {

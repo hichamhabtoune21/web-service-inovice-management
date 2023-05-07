@@ -20,6 +20,7 @@ const swaggerOptions = {
             }
         ]
     },
-    apis: ['../routes/*.js'] // Path to the API routes
+    apis: ['./routes/*.js', './routes/invoices/*.js'], // Path to the API routes
+   
 };
-exports.swaggerOptions=swaggerOptions;
+exports.swaggerOptions = swaggerOptions;

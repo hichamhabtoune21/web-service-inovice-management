@@ -8,6 +8,7 @@ const Invoice = models.Invoice;
 const crypto = require('crypto')
 const password = "password";
 const newUser = {
+  ID_User: 1000,
   Email: 'testuser@example.com',
   Password: crypto.createHash('md5').update(password).digest("hex"),
   Username: "test",
@@ -30,7 +31,7 @@ const basic_forbidden = Buffer.from('testforbiddenuser@example.com:' + password)
 
 
 const newInvoice = {
-  "ID_Invoice": 999999,
+  "ID_Invoice": 1000,
   "Progressive number": 10101,
   "Issuing date": "2023-12-10",
   "Business name": "",

@@ -5,7 +5,7 @@ const Invoice = require('../../lib/models/invoice').Invoice;
 const Ajv = require("ajv");
 const ajv = new Ajv();
 
-const id_invoice_schema = require('../../lib/schemas/id_invoice_schema').schema;
+const id_invoice_schema = require('../../lib/schemas/idInvoice').schema;
 const validate = ajv.compile(id_invoice_schema);
 const auth = require('basic-auth');
 
@@ -37,5 +37,6 @@ router.post("/", async function (req, res) {
         }
     }
 });
+
 
 module.exports = router;
