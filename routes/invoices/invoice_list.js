@@ -43,16 +43,10 @@ router.get("/", async function (req, res) {
  *     responses:
  *       200:
  *         description: Success
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/idInvoice'
  *       401:
  *         description: Unauthorized
  *       403:
- *         description: Forbidden
+description: Forbidden
  */
 
 

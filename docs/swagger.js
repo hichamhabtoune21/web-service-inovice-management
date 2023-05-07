@@ -18,9 +18,18 @@ const swaggerOptions = {
                 url: 'http://localhost:3000',
                 description: 'Local server'
             }
-        ]
+        ],
+    },
+    basicAuth: {
+        name:   'Authorization',
+        schema: {
+          type: 'basic',
+          in:   'header'
+        },
+        value:  'Basic <user:password>'
     },
     apis: ['./routes/*.js', './routes/invoices/*.js'], // Path to the API routes
-   
+
+
 };
 exports.swaggerOptions = swaggerOptions;

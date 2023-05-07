@@ -11,6 +11,7 @@ const auth = require('basic-auth');
 
 router.post("/", async function (req, res) {
     if (req.headers.authorization == null) {
+        console.log(req.headers.authorization);
         res.sendStatus(400)
     } else {
         const credentials = auth(req);
@@ -37,6 +38,42 @@ router.post("/", async function (req, res) {
         }
     }
 });
+
+/**
+* @swagger
+* /invoices/search:
+*   post:
+*     summary: Get an invoice by ID
+*     description: Returns the invoice with the specified ID
+*     tags: [Invoices]
+*     parameters:
+*       - in: header
+*         name: Authorization
+*         type: string
+*         required: true
+*         description: Basic Authentication header with email and password credentials
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             $ref: '#/components/schemas/idInvoice'
+*     responses:
+*       200:
+*         description: Success
+*         content:
+*           application/json:
+*             schema:
+*               $ref: '#/components/schemas/Invoice'
+*       400:
+*         description: Bad request, invalid input format
+*       401:
+*         description: Unauthorized, missing or invalid credentials
+*       403:
+*         description: Forbidden, access to the specified invoice is not allowed
+*       404:
+*         description: Not found, the specified invoice does not exist
+*/
 
 
 module.exports = router;
