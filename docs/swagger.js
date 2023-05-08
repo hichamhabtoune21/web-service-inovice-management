@@ -4,7 +4,7 @@ const swaggerOptions = {
     swaggerDefinition: {
       info: {
         title: 'API',
-        description: 'API Information',
+        description: 'API for invoices',
       },
       securityDefinitions: {
         basicAuth: {
