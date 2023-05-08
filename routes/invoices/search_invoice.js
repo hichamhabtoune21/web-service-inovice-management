@@ -47,24 +47,19 @@ router.post("/", async function (req, res) {
 *     description: Returns the invoice with the specified ID
 *     tags: [Invoices]
 *     parameters:
-*       - in: header
-*         name: Authorization
-*         type: string
-*         required: true
-*         description: Basic Authentication header with email and password credentials
-*     requestBody:
-*       required: true
-*       content:
-*         application/json:
-*           schema:
-*             $ref: '#/components/schemas/idInvoice'
+ *       - in: body
+ *         name: invoice
+ *         description: 
+ *         required: true
+ *         schema:
+ *           $ref: '#/components/schemas/idInvoice'
 *     responses:
 *       200:
 *         description: Success
 *         content:
 *           application/json:
 *             schema:
-*               $ref: '#/components/schemas/Invoice'
+*               $ref: '#/components/schemas/idInvoice'
 *       400:
 *         description: Bad request, invalid input format
 *       401:

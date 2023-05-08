@@ -46,19 +46,13 @@ router.put("/", async function (req, res) {
 *     summary: Create invoice
 *     description: Creates a new invoice in the database with the provided JSON object
 *     tags: [Invoices]
-*     parameters:
-*       - in: header
-*         name: Authorization
-*         type: string
-*         required: true
-*         description: Basic Authentication header with email and password credentials
-*     requestBody:
-*       description: JSON object containing the invoice data to be created
-*       required: true
-*       content:
-*         application/json:
-*           schema:
-*             $ref: '#/components/schemas/createInvoice'
+ *     parameters:
+ *       - in: body
+ *         name: invoice
+ *         description: 
+ *         required: true
+ *         schema:
+ *           $ref: '#/components/schemas/createInvoice'
 *     responses:
 *       201:
 *         description: Created

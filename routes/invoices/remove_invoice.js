@@ -40,17 +40,12 @@ router.delete("/", async function (req, res) {
 
 /**
  * @swagger
- * /invoices:
+ * /invoices/remove:
  *   delete:
  *     summary: Delete invoice endpoint
  *     description: Deletes the invoice with the specified ID from the database
  *     tags: [Invoices]
  *     parameters:
- *       - in: header
- *         name: Authorization
- *         type: string
- *         required: true
- *         description: Basic Authentication header with email and password credentials
  *       - in: body
  *         name: invoice
  *         description: ID of the invoice to be deleted

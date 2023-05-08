@@ -28,26 +28,35 @@ router.get("/", async function (req, res) {
 });
 
 /**
- * @swagger
- * /invoices/list:
- *   get:
- *     summary: Get all invoices endpoint
- *     description: Get all invoices of database
- *     tags: [Invoices]
- *     parameters:
- *       - in: header
- *         name: Authorization
- *         type: string
- *         required: true
- *         description: Basic Authentication header with email and password credentials
- *     responses:
- *       200:
- *         description: Success
- *       401:
- *         description: Unauthorized
- *       403:
-description: Forbidden
- */
+* @swagger
+* /invoices/list:
+*   get:
+*     summary: Get all invoices endpoint
+*     description: Get all invoices of database
+*     tags: [Invoices]
+*     parameters:
+*       - name: limit
+*         in: query
+*         description: Maximum number of invoices to return
+*         required: false
+*         schema:
+*           type: integer
+*           default: 10
+*       - name: offset
+*         in: query
+*         description: Number of invoices to skip
+*         required: false
+*         schema:
+*           type: integer
+*           default: 0
+*     responses:
+*       200:
+*         description: Success
+*       401:
+*         description: Unauthorized
+*       403:
+*         description: Forbidden
+*/
 
 
 module.exports = router;
