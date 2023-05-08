@@ -59,7 +59,7 @@ router.post("/", async function (req, res) {
 *         content:
 *           application/json:
 *             schema:
-*               $ref: '#/components/schemas/idInvoice'
+*               $ref: '#/components/schemas/createInvoice'
 *       400:
 *         description: Bad request, invalid input format
 *       401:
