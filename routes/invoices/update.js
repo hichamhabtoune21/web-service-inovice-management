@@ -47,18 +47,12 @@ router.patch("/", async function (req, res) {
  *     description: Updates an invoice in the database with the provided JSON object
  *     tags: [Invoices]
  *     parameters:
- *       - in: header
- *         name: Authorization
- *         type: string
+ *       - in: body
+ *         name: invoice
+ *         description: Data to update an invoice
  *         required: true
- *         description: Basic Authentication header with email and password credentials
- *     requestBody:
- *       description: JSON object containing the invoice data to be updated
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/updateInvoice'
+ *         schema:
+ *           $ref: '#/components/schemas/updateInvoice'
  *     responses:
  *       200:
  *         description: Success
