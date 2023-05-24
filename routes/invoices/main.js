@@ -12,7 +12,7 @@ const search = require("./search_invoice");
 const remove = require("./remove_invoice");
 
 
-router.put("/", function () { }).use("/create", create);
+router.post("/", function () { }).use("/create", create);
 router.patch("/", function () { }).use("/update", update);
 router.delete("/", function () { }).use("/remove", remove);
 router.post("/", function () { }).use("/search", search);

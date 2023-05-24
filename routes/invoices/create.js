@@ -8,7 +8,7 @@ const invoice_schema = require('../../lib/schemas/createInvoice').schema;
 const validate = ajv.compile(invoice_schema);
 const auth = require('basic-auth');
 
-router.put("/", async function (req, res) {
+router.post("/", async function (req, res) {
   if (req.headers.authorization == null) {
     res.sendStatus(400)
   }
@@ -42,7 +42,7 @@ router.put("/", async function (req, res) {
 /**
 * @swagger
 * /invoices/create:
-*   put:
+*   post:
 *     summary: Create invoice
 *     description: Creates a new invoice in the database with the provided JSON object
 *     tags: [Invoices]

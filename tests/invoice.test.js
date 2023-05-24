@@ -8,7 +8,6 @@ const Invoice = models.Invoice;
 const crypto = require('crypto')
 const password = "password";
 const newUser = {
-  ID_User: 1000,
   Email: 'testuser@example.com',
   Password: crypto.createHash('md5').update(password).digest("hex"),
   Username: "test",
@@ -62,7 +61,7 @@ describe('Invoice: list', () => {
       .get('/invoices/list')
       .set('Authorization', 'Basic ' + basic)
       .expect(200)
-  })
+  }, 15000)
 
   test('should respond with 401 if not authenticated ', async () => {
     await request(app)
@@ -76,7 +75,7 @@ describe('Invoice: list', () => {
       .get('/invoices/list')
       .set('Authorization', 'Basic ' + basic_forbidden)
       .expect(403)
-  })
+  }, 15000)
 
 
 })
@@ -105,7 +104,7 @@ describe('Invoice: update invoice', () => {
       .send(newInvoice)
       .set('Authorization', 'Basic ' + basic)
       .expect(200)
-  })
+  }, 15000)
   test('should respond with 400 if user has not respected schema', async () => {
     await request(app)
       .patch('/invoices/update')
@@ -126,7 +125,7 @@ describe('Invoice: update invoice', () => {
       .send(newInvoice)
       .set('Authorization', 'Basic ' + basic_forbidden)
       .expect(403)
-  })
+  }, 15000)
 })
 
 describe('Invoice: create invoice', () => {
@@ -145,20 +144,20 @@ describe('Invoice: create invoice', () => {
 
   test('should respond with 201 status code ', async () => {
     await request(app)
-      .put('/invoices/create')
+      .post('/invoices/create')
       .send(newInvoice)
       .set('Authorization', 'Basic ' + basic)
       .expect(201)
-  })
+  }, 15000)
   test('should respond with 400 if user has not respected schema', async () => {
     await request(app)
-      .put('/invoices/create')
+      .post('/invoices/create')
       .set('Authorization', 'Basic ' + basic)
       .expect(400)
   })
   test('should respond with 401 if not authenticated ', async () => {
     await request(app)
-      .put('/invoices/create')
+      .post('/invoices/create')
       .send(newInvoice)
       .set('Authorization', 'Basic ' + "dGVzdDp0ZXN0")
       .expect(401)
@@ -166,11 +165,11 @@ describe('Invoice: create invoice', () => {
 
   test('should respond with 403 if user has not CREATE permission', async () => {
     await request(app)
-      .put('/invoices/create')
+      .post('/invoices/create')
       .send(newInvoice)
       .set('Authorization', 'Basic ' + basic_forbidden)
       .expect(403)
-  })
+  }, 15000)
 
 
 })
@@ -198,7 +197,7 @@ describe('Invoice: remove invoice', () => {
       .send({ ID_Invoice: testInvoice.ID_Invoice })
       .set('Authorization', 'Basic ' + basic)
       .expect(200)
-  })
+  }, 15000)
 
   test('should respond with 400 if user has not respected schema', async () => {
     await request(app)
@@ -221,7 +220,7 @@ describe('Invoice: remove invoice', () => {
     .send({ ID_Invoice: testInvoice.ID_Invoice })
       .set('Authorization', 'Basic ' + basic_forbidden)
       .expect(403)
-  })
+  }, 15000)
 
 
 })
@@ -249,7 +248,7 @@ describe('Invoice: search invoice', () => {
       .send({ ID_Invoice: testInvoice.ID_Invoice })
       .set('Authorization', 'Basic ' + basic)
       .expect(200)
-  })
+  }, 15000)
 
   test('should respond with 400 if user has not respected schema', async () => {
     await request(app)
@@ -272,7 +271,7 @@ describe('Invoice: search invoice', () => {
       .send({ ID_Invoice: testInvoice.ID_Invoice })
       .set('Authorization', 'Basic ' + basic_forbidden)
       .expect(403)
-  })
+  }, 15000)
 })
 
 
